@@ -1,0 +1,97 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+        <script src="../static/js/jquery-3.2.1.js"></script>
+        <script src="../static/js/animalProfileForm.js"></script>
+        <title>
+            New Animal Profile Page
+        </title>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-inverse">
+            <div class="container">
+                <div class="navbar-header" >
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <a class="navbar-brand" href="homePage">My Homepage</a>
+                </div>
+
+                 <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="showNewAnimalProfileForm">New Pet Profile</a></li>
+                    <li><a href="#">Link</a></li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">One more separated link</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                  </form>
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Link</a></li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="jumbotron">
+            <h1>Animal Profiles</h1>
+            <form action="/newProfile" method="post">
+                <label for="inputName" class="sr-only">Name</label>
+                <input type="name" name="inputName" id="inputName" class="form-control" placeholder="Name" required autofocus>
+                <label for="age" class="sr-only">Age</label>
+                <input type="age" name="inputAge" id="inputAge" class="form-control" placeholder="Age" required autofocus>
+                <label for="inputAnimalType" class="sr-only">Animal Type</label>
+                <input type="animalType" name="inputAnimalType" id="inputAnimalType" class="form-control" placeholder="Animal Type" required>
+                <label for="inputBreed" class="sr-only">Breed</label>
+                <input type="breed" name="inputBreed" id="inputBreed" class="form-control" placeholder="Breed" required>
+                <label for="inputBreedmix" class="sr-only">BreedMix</label>
+                <input type="breedmix" name="inputBreedmix" id="inputBreedmix" class="form-control" placeholder="Breedmix" required>
+                <label for="inputWeight" class="sr-only">Weight</label>
+                <input type="weight" name="inputWeight" id="inputWeight" class="form-control" placeholder="Weight" required>
+                <label for="inputDescription" class="sr-only">Description</label>
+                <input type="Description" name="inputDescription" id="inputDescription" class="form-control" placeholder="Description" required>
+                <label for="inputSex" class="sr-only">Sex</label>
+                <input type="sex" name="inputSex" id="inputSex" class="form-control" placeholder="Sex" required>
+                <label for="inputSpayed_Neutered" class="sr-only">Spayed or Neutered</label>
+                <input type="spayed_neutered" name="inputSpayed_Neutered" id="inputSpayed_Neutered" class="form-control" placeholder="yes/no" required>
+                <label for="inputShelterID" class="sr-only">ShelterID</label>
+                <input type="shelterID" name="inputShelterID" id="inputShelterID" class="form-control" placeholder="Shelter ID" required>
+                <input type="submit" value="Submit!" />
+               <!--<button id="btnSubmit" class="btn btn-lg btn-primary btn-block" type="button">Submit</button>-->
+            </form>
+      </div>
+    </body>
+</html>
