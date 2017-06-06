@@ -29,7 +29,7 @@
                  <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
-                   <li class="active"><a href="animalProfileForm">New Pet Profile</a></li>
+                    <li class="active"><a href="animalProfileForm">New Pet Profile</a></li>
                     <li class="active"><a href="animalProfiles">Animal Profiles</a></li>
                     <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
@@ -66,32 +66,18 @@
                 </div>
             </div>
         </nav>
-        <div class="jumbotron">
-            <h1>Animal Profiles</h1>
-            <form action="/newProfile" method="post">
-                <label for="inputName" class="sr-only">Name</label>
-                <input type="name" name="inputName" id="inputName" class="form-control" placeholder="Name" required autofocus>
-                <label for="age" class="sr-only">Age</label>
-                <input type="age" name="inputAge" id="inputAge" class="form-control" placeholder="Age" required autofocus>
-                <label for="inputAnimalType" class="sr-only">Animal Type</label>
-                <input type="animalType" name="inputAnimalType" id="inputAnimalType" class="form-control" placeholder="Animal Type" required>
-                <label for="inputBreed" class="sr-only">Breed</label>
-                <input type="breed" name="inputBreed" id="inputBreed" class="form-control" placeholder="Breed" required>
-                <label for="inputBreedmix" class="sr-only">BreedMix</label>
-                <input type="breedmix" name="inputBreedmix" id="inputBreedmix" class="form-control" placeholder="Breedmix" required>
-                <label for="inputWeight" class="sr-only">Weight</label>
-                <input type="weight" name="inputWeight" id="inputWeight" class="form-control" placeholder="Weight" required>
-                <label for="inputDescription" class="sr-only">Description</label>
-                <input type="Description" name="inputDescription" id="inputDescription" class="form-control" placeholder="Description" required>
-                <label for="inputSex" class="sr-only">Sex</label>
-                <input type="sex" name="inputSex" id="inputSex" class="form-control" placeholder="Sex" required>
-                <label for="inputSpayed_Neutered" class="sr-only">Spayed or Neutered</label>
-                <input type="spayed_neutered" name="inputSpayed_Neutered" id="inputSpayed_Neutered" class="form-control" placeholder="yes/no" required>
-                <label for="inputShelterID" class="sr-only">ShelterID</label>
-                <input type="shelterID" name="inputShelterID" id="inputShelterID" class="form-control" placeholder="Shelter ID" required>
-                <input type="submit" value="Submit!" />
-               <!--<button id="btnSubmit" class="btn btn-lg btn-primary btn-block" type="button">Submit</button>-->
-            </form>
-      </div>
+        <table style="width:100%">
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Type of Animal</th>
+                <th>Breed</th>
+                <th>Breed Mix</th>
+                <th>Weight</th>
+                <th>Description</th>
+                <th>Sex</th>
+                <th>Spayed or Neutered</th>
+            </tr>
+        </table>
     </body>
 </html>

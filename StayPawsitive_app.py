@@ -31,6 +31,10 @@ def homePage():
 def animalProfileForm():
     return render_template('new_animal_profile.html')
 
+@app.route('/animalProfiles')
+def animlaProfiles():
+    return render_template('animalProfiles.html')
+
 
 @app.route('/newProfile', methods=['POST'])
 def newProfile():
@@ -46,37 +50,37 @@ def newProfile():
         _description = request.form['inputDescription']
         _sex = request.form['inputSex']
         _spayed_neutered = request.form['inputSpayed_Neutered']
-        _shelterID = request.form['inputShelterID']
-        print("name is: " + _name + _age + _animalType + _shelterID)
+        #_shelterID = request.form['inputShelterID']
+        print("name is: " + _name + _age + _animalType)
         #validate the received values
         #if _name and _age and _animalType and _breed and _breedmix and _weight and _description and _sex and _spayed_neutered and _shelterID:
-
-            #with mysql.get_db().cursor() as cursor:
-             #   cursor.execute("insert into AnimalProfiles (name, age, animalType, breed, breedmix, weight, description, sex, spayed_neutered, shelter_ID) values (%s, %s, %s, %s, %s, %d, %s, %s, %s, %d)", (_name, _age, _animalType, _breed, _breedmix, _weight, _description, _sex, _spayed_neutered, _shelterID))
 
         try:
             cursor= connection.cursor()
             print ("writing to db")
             insert_stmt = (
-                "insert into AnimalProfiles (name, age, animalType, breed, breedmix, weight, description, sex, spayed_neutered, shelter_ID)"
-                "values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+                "insert into AnimalProfiles (name, age, animalType, breed, breedmix, weight, description, sex, spayed_neutered)"
+                "values (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
             )
-            data = (_name, _age, _animalType, _breed, _breedmix, _weight, _description, _sex, _spayed_neutered, _shelterID)
+            data = (_name, _age, _animalType, _breed, _breedmix, _weight, _description, _sex, _spayed_neutered)
             print ("after insert statement")
-            cursor.execute(insert_stmt, data)
-            #cur.execute("insert into AnimalProfiles (name, age, animalType, breed, breedmix, weight, description, sex, spayed_neutered, shelter_ID) values (%s, %s, %s, %s, %s, %d, %s, %s, %s, %d)", (_name, _age, _animalType, _breed, _breedmix, _weight, _description, _sex, _spayed_neutered, _shelterID))
+            try: cursor.execute(insert_stmt, data)
+            except Exception as es:
+                return json.dumps({'error &':str(es)})
             print ("wrote to db")
             connection.commit()
-            #mysql.get_db().commit()
             print("try statement")
-        except:
+        except Exception as ex:
             print("except statement")
-            return json.dumps({'html':'<span>Enter the required fields</span>'})
+            return json.dumps({'error':str(ex)})
     except Exception as e:
         return json.dumps({'error':str(e)})
     finally:
+        print ("end")
         cursor.close()
         connection.close()
+        return render_template('main_page.html')
+
 
 
 if __name__ == '__homePage__':
