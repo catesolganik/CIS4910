@@ -16,7 +16,12 @@ mysql = MySQL()
 #app.config['catherinesolganik.mysql.pythonanywhere-services.com'] = 'localhost'
 #mysql.init_app(app)
 
-#connection = pymysql.connect(host='catherinesolganik.mysql.pythonanywhere-services.com', user = 'catherinesolgani', password = 'Password1%', db = 'catherinesolgani$stay_pawsitive', charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
+connection = pymysql.connect(host='catherinesolganik.mysql.pythonanywhere-services.com',
+                            user = 'catherinesolgani',
+                            password = 'Password1%',
+                            db = 'catherinesolgani$stay_pawsitive',
+                            charset='utf8mb4',
+                            cursorclass=pymysql.cursors.DictCursor)
 
 @app.route('/homePage')
 def homePage():
@@ -33,31 +38,45 @@ def newProfile():
     try:
         # read the posted values from the UI
         _name = request.form['inputName']
-        print("name is: " + _name)
-        #_age = request.form['inputAge']
-        #_animalType = request.form['inputAnimalType']
-        #_breed = request.form['inputBreed']
-        #_breedmix = request.form['inputBreedmix']
-        #_weight = request.form['inputWeight']
-        #_description = request.form['inputDescription']
-        #_sex = request.form['inputSex']
-        #_spayed_neutered = request.form['inputSpayed_Neutered']
-        #_shelterID = request.form['inputShelterID']
-
+        _age = request.form['inputAge']
+        _animalType = request.form['inputAnimalType']
+        _breed = request.form['inputBreed']
+        _breedmix = request.form['inputBreedmix']
+        _weight = request.form['inputWeight']
+        _description = request.form['inputDescription']
+        _sex = request.form['inputSex']
+        _spayed_neutered = request.form['inputSpayed_Neutered']
+        _shelterID = request.form['inputShelterID']
+        print("name is: " + _name + _age + _animalType + _shelterID)
         #validate the received values
-        if _name and _age and _animalType and _breed and _breedmix and _weight and _description and _sex and _spayed_neutered and _shelterID:
+        #if _name and _age and _animalType and _breed and _breedmix and _weight and _description and _sex and _spayed_neutered and _shelterID:
 
-           with mysql.get_db().cursor() as cursor:
-                cursor.execute("insert into AnimalProfiles (name, age, animalType, breed, breedmix, weight, description, sex, spayed_neutered, shelter_ID) values (%s, %s, %s, %s, %s, %d, %s, %s, %s, %d)", (_name, _age, _animalType, _breed, _breedmix, _weight, _description, _sex, _spayed_neutered, _shelterID))
-           mysql.get_db().commit()
+            #with mysql.get_db().cursor() as cursor:
+             #   cursor.execute("insert into AnimalProfiles (name, age, animalType, breed, breedmix, weight, description, sex, spayed_neutered, shelter_ID) values (%s, %s, %s, %s, %s, %d, %s, %s, %s, %d)", (_name, _age, _animalType, _breed, _breedmix, _weight, _description, _sex, _spayed_neutered, _shelterID))
 
-        else:
+        try:
+            cursor= connection.cursor()
+            print ("writing to db")
+            insert_stmt = (
+                "insert into AnimalProfiles (name, age, animalType, breed, breedmix, weight, description, sex, spayed_neutered, shelter_ID)"
+                "values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+            )
+            data = (_name, _age, _animalType, _breed, _breedmix, _weight, _description, _sex, _spayed_neutered, _shelterID)
+            print ("after insert statement")
+            cursor.execute(insert_stmt, data)
+            #cur.execute("insert into AnimalProfiles (name, age, animalType, breed, breedmix, weight, description, sex, spayed_neutered, shelter_ID) values (%s, %s, %s, %s, %s, %d, %s, %s, %s, %d)", (_name, _age, _animalType, _breed, _breedmix, _weight, _description, _sex, _spayed_neutered, _shelterID))
+            print ("wrote to db")
+            connection.commit()
+            #mysql.get_db().commit()
+            print("try statement")
+        except:
+            print("except statement")
             return json.dumps({'html':'<span>Enter the required fields</span>'})
     except Exception as e:
         return json.dumps({'error':str(e)})
     finally:
         cursor.close()
-        #connection.close()
+        connection.close()
 
 
 if __name__ == '__homePage__':
