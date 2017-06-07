@@ -12,7 +12,7 @@
         </title>
     </head>
 
-    <body>
+    <body style="background-color:#FFDAB9;">
         <nav class="navbar navbar-inverse">
             <div class="container">
                 <div class="navbar-header" >
@@ -66,18 +66,79 @@
                 </div>
             </div>
         </nav>
-        <table style="width:100%">
-            <tr>
-                <th>Name</th>
-                <th>Age</th>
-                <th>Type of Animal</th>
-                <th>Breed</th>
-                <th>Breed Mix</th>
-                <th>Weight</th>
-                <th>Description</th>
-                <th>Sex</th>
-                <th>Spayed or Neutered</th>
-            </tr>
-        </table>
+        <div align="center">
+            <form>
+                <select name="Animal Type">
+                    <option value="Dog">Dog</option>
+                    <option value="Cat">Cat</option>
+                    <option value="Bird">Bird</option>
+                </select>
+                <select name="sex">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+        <div align="center">
+            <table width="75%" border="1">
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Type of Animal</th>
+                    <th>Breed</th>
+                    <th>Breed Mix</th>
+                    <th>Weight</th>
+                    <th>Description</th>
+                    <th>Sex</th>
+                    <th>Spayed or Neutered</th>
+                </tr>
+                <tr>
+                    <td>Caroline</td>
+                    <td>8</td>
+                    <td>Dog</td>
+                    <td>Chow Chow</td>
+                    <td>Retriever</td>
+                    <td>55 lbs</td>
+                    <td>light brown and black</td>
+                    <td>F</td>
+                    <td>Y</td>
+                </tr>
+                <tr>
+                    <td>Sammy</td>
+                    <td>5</td>
+                    <td>Cat</td>
+                    <td>Siamese</td>
+                    <td>None</td>
+                    <td>10 lbs</td>
+                    <td>tan and black</td>
+                    <td>M</td>
+                    <td>Y</td>
+                </tr>
+                <tr>
+                    <td>Herbert</td>
+                    <td>15</td>
+                    <td>Bird</td>
+                    <td>Parrot</td>
+                    <td>None</td>
+                    <td>1 lb</td>
+                    <td>yellow</td>
+                    <td>M</td>
+                    <td>n</td>
+                </tr>
+            </table>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+        </div>
+
+        <div align="center">
+            <img src="/static/images/StayPawsitiveLogo.png" width="60px" align="middle"/>
+        </div>
+        </div>
     </body>
+    <footer align="center">&copy; Copyright 2017 by StayPawsitive</footer>
 </html>
