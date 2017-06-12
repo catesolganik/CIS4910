@@ -11,7 +11,7 @@
     </head>
 
     <body style="background-color:#FFDAB9;">
-        <nav class="navbar navbar-inverse">
+         <nav class="navbar navbar-inverse">
             <div class="container">
                 <div class="navbar-header" >
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -65,18 +65,21 @@
         </nav>
         <div align="center" style="width:600px; margin:auto">
             <div style="text-align:center; color:#6B8E23">
-                <h1 style="font-size:300%">Stay Pawsitive</h1>
+                <div class="jumbotron">
+                    <h1>Feedback</h1>
+                    <p>Please leave any thoughts or reviews here:</p>
+                    <form action="/feedbackInput" method="post">
+                        <label for="inputFeedback" class="sr-only">Feedback</label>
+                        <input type="feedback" style="height: 100px" name="inputFeedback" id="inputFeedback" class="form-control" placeholder="Feedback" required autofocus>
+                        <input type="submit" value="Submit!" />
+                       <!--<button id="btnSubmit" class="btn btn-lg btn-primary btn-block" type="button">Submit</button>-->
+                    </form>
+                </div>
             </div>
             <div style="text-align:center; color:#6495ED; font-family:verdana">
                 <h4><i>No paws left behind</i></h4>
             </div>
-            <div align="center">
-                <img src="/static/images/quinn_pic1.jpg" width="500px" align="middle"/>
-            </div>
-            <div>
-                <p style="font-size:150%; color:#696969">We are a non-profit pet adoption site where shelters all over the country can list available animals.
-                Automatically search the shelters in your local area and find your perfect pet now! </p>
-            </div>
+
             <div>
                 <img src="/static/images/StayPawsitiveLogo.png" width="100px" align="middle"/>
             </div>
