@@ -91,47 +91,23 @@
                     <th>Description</th>
                     <th>Sex</th>
                     <th>Spayed or Neutered</th>
+                    <th>Shelter ID</th>
                 </tr>
-                <tr>
-                    <td>Caroline</td>
-                    <td>8</td>
-                    <td>Dog</td>
-                    <td>Chow Chow</td>
-                    <td>Retriever</td>
-                    <td>55 lbs</td>
-                    <td>light brown and black</td>
-                    <td>F</td>
-                    <td>Y</td>
-                </tr>
-                <tr>
-                    <td>Sammy</td>
-                    <td>5</td>
-                    <td>Cat</td>
-                    <td>Siamese</td>
-                    <td>None</td>
-                    <td>10 lbs</td>
-                    <td>tan and black</td>
-                    <td>M</td>
-                    <td>Y</td>
-                </tr>
-                <tr>
-                    <td>Herbert</td>
-                    <td>15</td>
-                    <td>Bird</td>
-                    <td>Parrot</td>
-                    <td>None</td>
-                    <td>1 lb</td>
-                    <td>yellow</td>
-                    <td>M</td>
-                    <td>n</td>
-                </tr>
+                {%  for entry in entries %}
+                <TR>
+                    <TD class="entry">{{entry.name}}</TD>
+                    <TD class="entry">{{entry.age}}</TD>
+                    <TD class="entry">{{entry.animalType}}</TD>
+                    <TD class="entry">{{entry.breed}}</TD>
+                    <TD class="entry">{{entry.breedmix}}</TD>
+                    <TD class="entry">{{entry.weight}}</TD>
+                    <TD class="entry">{{entry.description}}</TD>
+                    <TD class="entry">{{entry.sex}}</TD>
+                    <TD class="entry">{{entry.spayed_neutered}}</TD>
+                    <TD class="entry">{{entry.shelterID}}</TD>
+                </TR>
+                {% endfor %}
             </table>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
         </div>
 
         <div align="center">

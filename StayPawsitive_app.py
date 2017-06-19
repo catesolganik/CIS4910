@@ -1,30 +1,10 @@
-from flask import Flask, redirect, render_template, request, json, url_for, session, abort
+from flask import Flask, redirect, render_template, request, json, url_for, session, abort, flash
 from flaskext.mysql import MySQL
-import pymysql.cursors
-#import os
-#import xlrd
-from sqlalchemy.orm import sessionmaker
-from hashlib import md5
+import pymysql.cursors, myconnection
 
 
 app = Flask(__name__)
 mysql = MySQL()
-
-
-
-# MySQL configurations
-#app.config['catherinesolgani'] = 'catie'
-#app.config['Password1%'] = 'catie'
-#app.config['catherinesolgani$stay_pawsitive'] = 'StayPawsitive'
-#app.config['catherinesolganik.mysql.pythonanywhere-services.com'] = 'localhost'
-#mysql.init_app(app)
-
-connection = pymysql.connect(host='catherinesolganik.mysql.pythonanywhere-services.com',
-                            user = 'catherinesolgani',
-                            password = 'Password1%',
-                            db = 'catherinesolgani$stay_pawsitive',
-                            charset='utf8mb4',
-                            cursorclass=pymysql.cursors.DictCursor)
 
 @app.route('/')
 def homePage():
@@ -34,9 +14,22 @@ def homePage():
 def animalProfileForm():
     return render_template('new_animal_profile.html')
 
+
 @app.route('/animalProfiles')
 def animlaProfiles():
-    return render_template('animalProfiles.html')
+    try:
+        connection = myconnection.getConnection()
+        cursor= connection.cursor()
+        sql="select name, age, animalType, breed, breedmix, weight, description, sex, spayed_neutered, shelterID  from AnimalProfiles"
+        cursor.execute(sql)
+        entries = cursor.fetchall()
+    except Exception as e:
+        return json.dumps({'error':str(e)})
+    finally:
+        cursor.close()
+        connection.close()
+        return render_template('animalProfiles.html', entries=entries)
+
 
 @app.route('/feedback')
 def feedback():
@@ -52,6 +45,7 @@ def feedbackInput():
         #if _name and _age and _animalType and _breed and _breedmix and _weight and _description and _sex and _spayed_neutered and _shelterID:
         print(_feedback)
         try:
+            connection = myconnection.getConnection()
             cursor= connection.cursor()
             print ("writing to db")
             insert_stmt = (
@@ -140,6 +134,7 @@ def newProfile():
         #if _name and _age and _animalType and _breed and _breedmix and _weight and _description and _sex and _spayed_neutered and _shelterID:
 
         try:
+            connection = myconnection.getConnection()
             cursor= connection.cursor()
             print ("writing to db")
             insert_stmt = (
@@ -179,6 +174,7 @@ def do_admin_login():
     if 'username' in session:
         return redirect(url_for('login'))
     try:
+        connection = myconnection.getConnection()
         cursor= connection.cursor()
         if request.method == 'POST':
             print("after connection")
@@ -217,6 +213,6 @@ def logout():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
 
 
